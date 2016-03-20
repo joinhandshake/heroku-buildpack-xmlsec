@@ -39,6 +39,13 @@ echo "-----> Exporting flags"
 export LIBXMLSEC1=${INSTALL_PATH}
 export CFLAGS="-I${INSTALL_PATH}/include/xmlsec1"
 
+# write an export script to pass flags to subsequent buildpacks
+
+echo 'export PATH="$PATH:vendor/xmlsec1/bin"' > $buildpack_dir/export
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/xmlsec1/lib"' >> $buildpack_dir/export
+echo "export LIBXMLSEC1=${INSTALL_PATH}" >> $buildpack_dir/export
+echo "export CFLAGS=\"-I${INSTALL_PATH}/include/xmlsec1\"" >> $buildpack_dir/export
+
 # finish
 
 echo "-----> Installed xmlsec1"
