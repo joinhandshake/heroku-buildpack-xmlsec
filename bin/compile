@@ -3,6 +3,7 @@
 set -e
 
 BUILD_DIR=$1
+BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
 
 ZIP_FILE_NAME="xmlsec1-1.2-cedar14.tgz"
 DOWNLOAD_URL="https://s3.amazonaws.com/handshake-public/${ZIP_FILE_NAME}"
@@ -38,6 +39,13 @@ echo "-----> Exporting flags"
 
 export LIBXMLSEC1=${INSTALL_PATH}
 export CFLAGS="-I${INSTALL_PATH}/include/xmlsec1"
+
+# write an export script to pass flags to subsequent buildpacks
+
+echo 'export PATH="$PATH:vendor/xmlsec1/bin"' > $BP_DIR/export
+echo 'export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:vendor/xmlsec1/lib"' >> $BP_DIR/export
+echo "export LIBXMLSEC1=${INSTALL_PATH}" >> $BP_DIR/export
+echo "export CFLAGS=\"-I${INSTALL_PATH}/include/xmlsec1\"" >> $BP_DIR/export
 
 # finish
 
