@@ -1,7 +1,12 @@
 # heroku-buildpack-xmlsec
 
 A buildpack for installing xmlsec1 on Heroku
+
 This fork is for Cedar14, as the original repo only supported standard Cedar (openssl version incompatibility)
+
+## Unsupported
+
+This buildpack is no longer supported by Handshake.
 
 ## Usage
 
