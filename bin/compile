@@ -31,4 +31,10 @@ export CFLAGS="-I${INSTALL_PATH}/include/xmlsec1"
 
 # finish
 
+echo 1=$1
+echo BUILD_DIR=${BUILD_DIR}
+echo ZIP_DIR=${ZIP_DIR}
+echo INSTALL_PATH=${INSTALL_PATH}
+echo LIBXMLSEC1=${LIBXMLSEC1}
+echp CFLAGS=${CFLAGS}
 echo "-----> Installed xmlsec1"
